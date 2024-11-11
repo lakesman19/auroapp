@@ -21,19 +21,19 @@ const SignUp = () => {
   const submit = async () => {
     if (form.username === "" || form.email === "" || form.password === "") {
       Alert.alert("Error", "Please fill in all fields");
-    }
+    } else {
+      setSubmitting(true);
+      try {
+        // const result = await createUser(form.email, form.password, form.username);
+        // setUser(result);
+        setIsLogged(true);
 
-    setSubmitting(true);
-    try {
-      const result = await createUser(form.email, form.password, form.username);
-      setUser(result);
-      setIsLogged(true);
-
-      router.replace("/home");
-    } catch (error) {
-      Alert.alert("Error", error.message);
-    } finally {
-      setSubmitting(false);
+        router.replace("/home");
+      } catch (error) {
+        Alert.alert("Error", error.message);
+      } finally {
+        setSubmitting(false);
+      }
     }
   };
 

@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-
-import { getCurrentUser } from "../lib/appwrite";
+import { Avatars } from "react-native-appwrite";
 
 const GlobalContext = createContext();
 export const useGlobalContext = () => useContext(GlobalContext);
@@ -11,22 +10,16 @@ const GlobalProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getCurrentUser()
-      .then((res) => {
-        if (res) {
-          setIsLogged(true);
-          setUser(res);
-        } else {
-          setIsLogged(false);
-          setUser(null);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    // Simulate setting a dummy user without fetching
+    const dummyUser = {
+      id: 1,
+      name: "Onanuga Yusuf",
+      email: "user@example.com",
+      avatar: "https://i.pravatar.cc/150?img=1",
+    };
+    setIsLogged(true);
+    setUser(dummyUser);
+    setLoading(false);
   }, []);
 
   return (

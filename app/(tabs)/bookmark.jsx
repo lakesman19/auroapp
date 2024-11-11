@@ -1,14 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Text, ScrollView } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const bookmark = () => {
   return (
-    <View>
-      <Text>bookmark</Text>
-    </View>
-  )
-}
+    <SafeAreaView className="px-4 my-6 bg-primary h-full">
+      <ScrollView contentContainerStyle={{ height: "100%" }}>
+        <Text className="text-2xl text-white font-psemibold">Bookmark</Text>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
 
-export default bookmark
+export default bookmark;
 
-const styles = StyleSheet.create({})
+
+

@@ -19,22 +19,28 @@ const SignIn = () => {
   const submit = async () => {
     if (form.email === "" || form.password === "") {
       Alert.alert("Error", "Please fill in all fields");
-    }
-
-    setSubmitting(true);
-
-    try {
-      await signIn(form.email, form.password);
-      const result = await getCurrentUser();
-      setUser(result);
-      setIsLogged(true);
-
-      Alert.alert("Success", "User signed in successfully");
-      router.replace("/home");
-    } catch (error) {
-      Alert.alert("Error", error.message);
-    } finally {
-      setSubmitting(false);
+    } else {
+      setSubmitting(true);
+      try {
+        // await signIn(form.email, form.password);
+        // const result = await getCurrentUser();
+        // setUser(result);
+        // setIsLogged(true);
+        const dummyUser = {
+          id: 1,
+          name: "Onanuga Yusuf",
+          email: "user@example.com",
+          avatar: "https://i.pravatar.cc/150?img=1",
+        };
+        setIsLogged(true);
+        setUser(dummyUser);
+        Alert.alert("Success", "User signed in successfully");
+        router.replace("/home");
+      } catch (error) {
+        Alert.alert("Error", error.message);
+      } finally {
+        setSubmitting(false);
+      }
     }
   };
 
@@ -74,7 +80,7 @@ const SignIn = () => {
 
           <CustomButton
             title="Sign In"
-           handlePress={submit}
+            handlePress={submit}
             containerStyles="mt-7"
             isLoading={isSubmitting}
           />
